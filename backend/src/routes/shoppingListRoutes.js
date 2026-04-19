@@ -1,8 +1,8 @@
 // backend/src/routes/shoppingListRoutes.js
 const express = require('express');
 const db = require('../db');
-const authMiddleware = require('../middleware/authproxy');
-const groupMemberMiddleware = require('../middleware/groupMemberproxy');
+const authMiddleware = require('../middleware/authmiddleware');
+const groupMemberMiddleware = require('../middleware/groupMembermiddleware');
 
 const router = express.Router({ mergeParams: true });
 

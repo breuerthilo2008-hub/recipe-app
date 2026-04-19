@@ -2,8 +2,8 @@
 const express = require('express');
 const crypto = require('crypto');
 const db = require('../db');
-const authMiddleware = require('../middleware/authproxy');
-const groupMemberMiddleware = require('../middleware/groupMemberproxy');
+const authMiddleware = require('../middleware/authmiddleware');
+const groupMemberMiddleware = require('../middleware/groupMembermiddleware');
 
 const router = express.Router();
 
