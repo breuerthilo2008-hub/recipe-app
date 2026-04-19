@@ -34,9 +34,12 @@ CREATE TABLE IF NOT EXISTS invites (
   id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   group_id    UUID REFERENCES groups(id) ON DELETE CASCADE,
   token       TEXT UNIQUE NOT NULL,
+  code        CHAR(6) UNIQUE,
   invited_by  UUID REFERENCES users(id),
   email       TEXT,
   used        BOOLEAN DEFAULT false,
+  max_uses    INT DEFAULT 10,
+  use_count   INT DEFAULT 0,
   expires_at  TIMESTAMPTZ NOT NULL
 );
 
@@ -51,6 +54,7 @@ CREATE TABLE IF NOT EXISTS recipes (
   servings    INT,
   prep_time_min INT,
   cook_time_min INT,
+  image_url   TEXT,
   created_at  TIMESTAMPTZ DEFAULT now(),
   updated_at  TIMESTAMPTZ DEFAULT now()
 );

@@ -1,6 +1,7 @@
 // backend/src/routes/mealPlanRoutes.js (Relevant Sections)
 const isUUID = (str) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
-
+const express = require('express');
+const router = express.Router();
 // GET /current
 router.get('/current', async (req, res) => {
   const { groupId } = req.params;
@@ -34,3 +35,4 @@ router.post('/generate', async (req, res) => {
   }
   // ... rest of the logic
 });
+module.exports = router;
