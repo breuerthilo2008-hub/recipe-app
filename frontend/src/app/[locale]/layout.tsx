@@ -4,13 +4,14 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { GroupProvider } from '@/context/GroupContext';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Recipe Family',
+  title: 'Heirloom Kitchen',
   description: 'Shared family recipe management',
 };
 
@@ -25,22 +26,19 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Global Background Styling Applied to Body */}
       <body className={`${jakarta.className} bg-background min-h-screen text-foreground antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+            defaultTheme="light"
+            enableSystem={false}
           >
-            {/* The Header is now part of every page */}
-            <Navigation />
-
-            {/* Global Page Padding for Header Clearance */}
-            <div className="pt-16">
-              {children}
-            </div>
+            <GroupProvider>
+              <Navigation />
+              <div className="pt-16">
+                {children}
+              </div>
+            </GroupProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

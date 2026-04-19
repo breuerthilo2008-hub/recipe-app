@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
+    "@vercel/blob": "^2.3.3",
     "autoprefixer": "^10.5.0",
     "form-data": "^4.0.5",
     "lucide-react": "^1.8.0",
