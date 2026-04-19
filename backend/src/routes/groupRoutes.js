@@ -2,8 +2,8 @@
 const express = require('express');
 const crypto = require('crypto');
 const db = require('../db');
-const authMiddleware = require('../middleware/authMiddleware');
-const groupMemberMiddleware = require('../middleware/groupMemberMiddleware');
+const authMiddleware = require('../middleware/authproxy');
+const groupMemberMiddleware = require('../middleware/groupMemberproxy');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
   const client = await db.pool.connect();
   try {
     await client.query('BEGIN');
-    
+
     // Create group
     const groupRes = await client.query(
       'INSERT INTO groups (name, owner_id) VALUES ($1, $2) RETURNING *',
@@ -52,7 +52,7 @@ router.get('/:groupId', groupMemberMiddleware, async (req, res) => {
       'SELECT u.id, u.name, u.email, gm.role FROM users u JOIN group_members gm ON u.id = gm.user_id WHERE gm.group_id = $1',
       [req.params.groupId]
     );
-    
+
     res.json({
       group: groupRes.rows[0],
       members: membersRes.rows
@@ -103,7 +103,7 @@ router.post('/join', async (req, res) => {
     const client = await db.pool.connect();
     try {
       await client.query('BEGIN');
-      
+
       // Add member
       await client.query(
         'INSERT INTO group_members (group_id, user_id, role) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING',

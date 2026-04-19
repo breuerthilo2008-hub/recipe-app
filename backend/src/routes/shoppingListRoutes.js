@@ -1,8 +1,8 @@
 // backend/src/routes/shoppingListRoutes.js
 const express = require('express');
 const db = require('../db');
-const authMiddleware = require('../middleware/authMiddleware');
-const groupMemberMiddleware = require('../middleware/groupMemberMiddleware');
+const authMiddleware = require('../middleware/authproxy');
+const groupMemberMiddleware = require('../middleware/groupMemberproxy');
 
 const router = express.Router({ mergeParams: true });
 
@@ -37,25 +37,25 @@ router.get('/', async (req, res) => {
 // GET /export - Export as CSV or TXT
 router.get('/export', async (req, res) => {
   const { format } = req.query; // 'csv' or 'txt'
-  
+
   try {
     const list = await getAggregatedList(req.params.planId);
 
     if (format === 'csv') {
       res.setHeader('Content-Type', 'text/csv');
       res.setHeader('Content-Disposition', `attachment; filename="shopping-list-${req.params.planId}.csv"`);
-      
+
       let csv = 'Ingredient,Quantity,Unit\n';
       list.forEach(row => {
         csv += `"${row.name}",${row.total || 0},"${row.unit || ''}"\n`;
       });
       return res.send(csv);
-    } 
-    
+    }
+
     // Default to TXT
     res.setHeader('Content-Type', 'text/plain');
     res.setHeader('Content-Disposition', `attachment; filename="shopping-list-${req.params.planId}.txt"`);
-    
+
     let txt = `Shopping List for Plan ${req.params.planId}\n`;
     txt += '='.repeat(40) + '\n';
     list.forEach(row => {

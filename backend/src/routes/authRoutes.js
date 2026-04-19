@@ -109,7 +109,7 @@ router.post('/login', async (req, res) => {
  * GET /api/auth/me
  * Retrieves current user data from the JWT.
  */
-router.get('/me', require('../middleware/authMiddleware'), async (req, res) => {
+router.get('/me', require('../middleware/authproxy'), async (req, res) => {
   try {
     const result = await db.query(
       'SELECT id, name, email, created_at FROM users WHERE id = $1',
