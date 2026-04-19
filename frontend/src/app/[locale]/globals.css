@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F8F3EC;
+  --color-foreground: #3D3128;
+  
+  --color-primary: #7D8C7C;
+  --color-primary-foreground: #F8F3EC;
+  
+  --color-secondary: #D9C5B2;
+  --color-secondary-foreground: #3D3128;
+  
+  --color-accent: #3D3128;
+  --color-accent-foreground: #F8F3EC;
+  
+  --color-card: #FFFFFF;
+  --color-card-foreground: #3D3128;
+  
+  /* Standard colors for borders etc */
+  --color-border: #E2E8F0;
+  
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Heirloom Utilities */
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
