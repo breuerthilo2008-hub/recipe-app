@@ -40,11 +40,11 @@ router.post('/register', async (req, res) => {
     // 4. Generate JWT token
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
-    // 5. Set JWT as an httpOnly cookie
+    const isSecure = req.get('origin') ? req.get('origin').startsWith('https://') : false;
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: isSecure,
+      sameSite: isSecure ? 'none' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -87,11 +87,11 @@ router.post('/login', async (req, res) => {
     // 3. Generate token
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
 
-    // 4. Set cookie
+    const isSecure = req.get('origin') ? req.get('origin').startsWith('https://') : false;
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: isSecure,
+      sameSite: isSecure ? 'none' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
