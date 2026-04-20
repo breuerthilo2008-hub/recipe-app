@@ -2,7 +2,7 @@
 const express = require('express');
 const db = require('../db');
 const authMiddleware = require('../middleware/authMiddleware');
-const groupMemberMiddleware = require('../middleware/groupMembermiddleware');
+const groupMemberMiddleware = require('../middleware/groupMemberMiddleware');
 
 const router = express.Router({ mergeParams: true });
 
