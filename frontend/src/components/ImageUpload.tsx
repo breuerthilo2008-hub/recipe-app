@@ -74,7 +74,7 @@ export default function ImageUpload({ onUploadComplete, initialValue }: ImageUpl
         className={`
           relative group cursor-pointer overflow-hidden transition-all duration-500
           aspect-video rounded-[3rem] border-4 border-dashed flex flex-col items-center justify-center
-          ${dragActive ? 'border-primary bg-primary/5 scale-[1.02]' : 'border-slate-100 bg-slate-50 hover:border-primary/30'}
+          ${dragActive ? 'border-primary bg-primary/5 scale-[1.02]' : 'border-border bg-muted hover:border-primary/30'}
           ${preview ? 'border-none' : ''}
         `}
       >
@@ -94,7 +94,7 @@ export default function ImageUpload({ onUploadComplete, initialValue }: ImageUpl
               className={`w-full h-full object-cover transition-all duration-700 ${uploading ? 'opacity-40 grayscale' : 'group-hover:scale-105'}`} 
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-               <div className="bg-white/90 backdrop-blur p-4 rounded-2xl flex items-center gap-2 text-accent font-black shadow-xl">
+               <div className="bg-card/90 backdrop-blur p-4 rounded-2xl flex items-center gap-2 text-accent font-black shadow-xl">
                  <Camera size={20} />
                  Change Photo
                </div>
@@ -102,7 +102,7 @@ export default function ImageUpload({ onUploadComplete, initialValue }: ImageUpl
             
             {uploading && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <div className="bg-white/80 backdrop-blur p-6 rounded-full shadow-2xl">
+                <div className="bg-card/80 backdrop-blur p-6 rounded-full shadow-2xl">
                   <Loader2 className="text-primary animate-spin" size={32} />
                 </div>
                 <p className="text-white font-black drop-shadow-md uppercase tracking-[0.2em] text-sm">Uploading...</p>
@@ -112,7 +112,7 @@ export default function ImageUpload({ onUploadComplete, initialValue }: ImageUpl
             {!uploading && (
                 <button 
                   onClick={(e) => { e.stopPropagation(); setPreview(null); onUploadComplete(''); }}
-                  className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur text-red-500 rounded-2xl shadow-lg hover:bg-white transition-all"
+                  className="absolute top-4 right-4 p-3 bg-card/90 backdrop-blur text-red-500 rounded-2xl shadow-lg hover:bg-card transition-all"
                 >
                     <X size={20} />
                 </button>
@@ -124,12 +124,12 @@ export default function ImageUpload({ onUploadComplete, initialValue }: ImageUpl
               <UploadCloud size={32} />
             </div>
             <h3 className="text-2xl font-black text-accent mb-2">Add a Cover Photo</h3>
-            <p className="text-slate-400 font-medium max-w-[200px] mx-auto text-sm">Drag and drop or click to upload your recipe's masterpiece.</p>
+            <p className="text-muted-foreground font-medium max-w-[200px] mx-auto text-sm">Drag and drop or click to upload your recipe's masterpiece.</p>
           </div>
         )}
       </div>
       
-      <p className="mt-4 text-[10px] uppercase font-black text-slate-400 tracking-widest text-center">
+      <p className="mt-4 text-[10px] uppercase font-black text-muted-foreground tracking-widest text-center">
         Maximum file size: 5MB • Supported formats: JPG, PNG, WEBP
       </p>
     </div>

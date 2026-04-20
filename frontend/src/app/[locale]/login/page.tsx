@@ -42,10 +42,10 @@ export default function LoginPage() {
         <h2 className="text-2xl font-bold text-accent font-sans">Recipe Family</h2>
       </div>
 
-      <div className="w-full max-w-md bg-card rounded-[2.5rem] p-10 md:p-12 shadow-2xl shadow-slate-200/50 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <div className="w-full max-w-md bg-card rounded-[2.5rem] p-10 md:p-12 shadow-2xl shadow-black/5 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-accent mb-3">{t('login_title')}</h1>
-          <p className="text-slate-500">{t('login_subtitle')}</p>
+          <p className="text-muted-foreground">{t('login_subtitle')}</p>
         </div>
 
         {registered && (
@@ -64,7 +64,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-400 uppercase tracking-wider ml-1">
+            <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider ml-1">
               {t('email_label')}
             </label>
             <div className="relative group">
@@ -77,13 +77,13 @@ export default function LoginPage() {
                 placeholder="nina@family.com"
                 value={formData.email} 
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-slate-200 font-medium"
+                className="w-full bg-muted border-2 border-transparent focus:border-primary/20 focus:bg-card rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-slate-200 font-medium"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-400 uppercase tracking-wider ml-1">
+            <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider ml-1">
               {t('password_label')}
             </label>
             <div className="relative group">
@@ -96,7 +96,7 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 value={formData.password} 
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
-                className="w-full bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-2xl py-4 pl-12 pr-12 outline-none transition-all placeholder:text-slate-200 font-medium"
+                className="w-full bg-muted border-2 border-transparent focus:border-primary/20 focus:bg-card rounded-2xl py-4 pl-12 pr-12 outline-none transition-all placeholder:text-slate-200 font-medium"
               />
               <button 
                 type="button"
@@ -123,8 +123,8 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div className="mt-10 pt-8 border-t border-slate-100 text-center">
-          <p className="text-slate-500 text-sm font-medium">
+        <div className="mt-10 pt-8 border-t border-border text-center">
+          <p className="text-muted-foreground text-sm font-medium">
             {t('no_account')}{' '}
             <Link 
               href="/register" 

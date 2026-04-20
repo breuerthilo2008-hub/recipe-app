@@ -112,7 +112,7 @@ export default function NewRecipePage() {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center">
         <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
-        <p className="text-slate-400 font-bold uppercase tracking-widest text-xs animate-pulse">Syncing Family Vault...</p>
+        <p className="text-muted-foreground font-bold uppercase tracking-widest text-xs animate-pulse">Syncing Family Vault...</p>
       </div>
     );
   }
@@ -136,19 +136,19 @@ export default function NewRecipePage() {
             
             <div 
               onClick={() => fileInputRef.current?.click()} 
-              className="group relative bg-white border-4 border-dashed border-slate-100 hover:border-primary/30 hover:bg-primary/[0.01] transition-all duration-500 rounded-[3.5rem] p-24 text-center cursor-pointer shadow-sm hover:border-solid hover:shadow-2xl hover:shadow-primary/5"
+              className="group relative bg-card border-4 border-dashed border-border hover:border-primary/30 hover:bg-primary/[0.01] transition-all duration-500 rounded-[3.5rem] p-24 text-center cursor-pointer shadow-sm hover:border-solid hover:shadow-2xl hover:shadow-primary/5"
             >
               <input type="file" ref={fileInputRef} onChange={handleFileUpload} accept="image/*" className="hidden" />
               <div className="w-24 h-24 bg-primary/10 rounded-[2rem] flex items-center justify-center mb-8 mx-auto group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/10">
                 <Camera className="text-primary w-12 h-12" />
               </div>
               <h3 className="text-3xl font-black text-accent mb-4 leading-tight">{t_form('scan_prompt')}</h3>
-              <p className="text-slate-400 max-w-sm mx-auto font-medium text-lg leading-relaxed">{t_form('scan_subtext')}</p>
+              <p className="text-muted-foreground max-w-sm mx-auto font-medium text-lg leading-relaxed">{t_form('scan_subtext')}</p>
             </div>
             
             <button 
               onClick={() => setStep('form')} 
-              className="mt-12 w-full py-5 border-2 border-slate-100 rounded-3xl text-slate-400 font-black uppercase tracking-widest text-sm hover:bg-slate-50 hover:text-accent hover:border-slate-200 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm"
+              className="mt-12 w-full py-5 border-2 border-border rounded-3xl text-muted-foreground font-black uppercase tracking-widest text-sm hover:bg-muted hover:text-accent hover:border-border transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm"
             >
               <FileText size={18} />
               {t_form('skip_to_manual')}
@@ -165,7 +165,7 @@ export default function NewRecipePage() {
               </div>
             </div>
             <h2 className="text-4xl font-black text-accent mt-16 mb-4">{t_form('processing')}</h2>
-            <p className="text-slate-400 font-black animate-pulse tracking-widest uppercase text-sm">Digitizing your family heritage...</p>
+            <p className="text-muted-foreground font-black animate-pulse tracking-widest uppercase text-sm">Digitizing your family heritage...</p>
           </div>
         )}
 
@@ -198,7 +198,7 @@ export default function NewRecipePage() {
                 
                 {/* Cloud Image Upload Section */}
                 <section>
-                  <h2 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                  <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                     <div className="w-1 h-4 bg-primary rounded-full"></div>
                     Kitchen Visuals
                   </h2>
@@ -207,7 +207,7 @@ export default function NewRecipePage() {
 
                 {/* Basic Info */}
                 <section className="space-y-4">
-                  <h2 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                  <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                      <div className="w-1 h-4 bg-primary rounded-full"></div>
                      Basic Information
                   </h2>
@@ -215,19 +215,19 @@ export default function NewRecipePage() {
                     type="text" 
                     value={title} 
                     onChange={e => setTitle(e.target.value)}
-                    className="text-4xl font-black text-accent w-full bg-white border-none rounded-[2.5rem] p-8 shadow-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-200 transition-all font-sans"
+                    className="text-4xl font-black text-accent w-full bg-card border-none rounded-[2.5rem] p-8 shadow-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-200 transition-all font-sans"
                     placeholder={t_recipe('title_placeholder')}
                   />
                   <textarea 
                     value={description}
                     onChange={e => setDescription(e.target.value)}
-                    className="text-lg text-slate-500 font-medium w-full bg-white border-none rounded-[2.5rem] p-8 shadow-sm focus:ring-2 focus:ring-primary/20 h-32 transition-all leading-relaxed"
+                    className="text-lg text-muted-foreground font-medium w-full bg-card border-none rounded-[2.5rem] p-8 shadow-sm focus:ring-2 focus:ring-primary/20 h-32 transition-all leading-relaxed"
                     placeholder={t_recipe('desc_placeholder')}
                   />
                 </section>
 
                 {/* Instructions */}
-                <section className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-sm border border-slate-50">
+                <section className="bg-card p-8 md:p-12 rounded-[3.5rem] shadow-sm border border-border">
                   <h2 className="text-2xl font-black text-accent mb-8 flex items-center gap-3">
                     <FileText className="text-primary" />
                     {t_recipe('instructions')}
@@ -235,7 +235,7 @@ export default function NewRecipePage() {
                   <textarea 
                     value={instructions} 
                     onChange={e => setInstructions(e.target.value)}
-                    className="w-full h-96 bg-slate-50 border-none rounded-3xl p-8 text-slate-600 font-medium leading-relaxed focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full h-96 bg-muted border-none rounded-3xl p-8 text-card-foreground font-medium leading-relaxed focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder={t_recipe('instr_placeholder')}
                   />
                 </section>
@@ -246,17 +246,17 @@ export default function NewRecipePage() {
                 
                 {/* Meta Inputs */}
                 <section className="grid grid-cols-1 gap-4">
-                  <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-50 group hover:border-primary/20 transition-all">
+                  <div className="bg-card p-6 rounded-3xl shadow-sm border border-border group hover:border-primary/20 transition-all">
                     <div className="flex items-center justify-between mb-4">
-                       <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest">{t_recipe('servings')}</p>
+                       <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">{t_recipe('servings')}</p>
                        <Users size={16} className="text-slate-300" />
                     </div>
                     <input type="number" value={servings} onChange={e => setServings(parseInt(e.target.value))} className="w-full bg-transparent font-black text-3xl text-accent" />
                   </div>
                   
-                  <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-50 group hover:border-primary/20 transition-all">
+                  <div className="bg-card p-6 rounded-3xl shadow-sm border border-border group hover:border-primary/20 transition-all">
                     <div className="flex items-center justify-between mb-4">
-                       <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest">{t_recipe('prep_time')}</p>
+                       <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">{t_recipe('prep_time')}</p>
                        <Loader2 size={16} className="text-slate-300" />
                     </div>
                     <div className="flex items-end gap-2">
@@ -265,9 +265,9 @@ export default function NewRecipePage() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-50 group hover:border-primary/20 transition-all">
+                  <div className="bg-card p-6 rounded-3xl shadow-sm border border-border group hover:border-primary/20 transition-all">
                     <div className="flex items-center justify-between mb-4">
-                       <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest">{t_recipe('cook_time')}</p>
+                       <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">{t_recipe('cook_time')}</p>
                        <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center"><div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div></div>
                     </div>
                     <div className="flex items-end gap-2">
@@ -278,7 +278,7 @@ export default function NewRecipePage() {
                 </section>
 
                 {/* Ingredients Column */}
-                <section className="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-50 sticky top-24">
+                <section className="bg-card p-8 rounded-[3rem] shadow-sm border border-border sticky top-24">
                   <h2 className="text-2xl font-black text-accent mb-8 flex items-center gap-3">
                     <Plus className="text-primary" />
                     {t_recipe('ingredients')}
@@ -288,7 +288,7 @@ export default function NewRecipePage() {
                     {ingredients.map((ing, i) => (
                       <div key={i} className="flex gap-2 items-center group animate-in slide-in-from-right-2 duration-300" style={{ animationDelay: `${i * 50}ms` }}>
                         <input 
-                          className="w-16 bg-slate-50 rounded-xl p-3 text-sm font-black text-primary text-center focus:ring-2 focus:ring-primary/20" 
+                          className="w-16 bg-muted rounded-xl p-3 text-sm font-black text-primary text-center focus:ring-2 focus:ring-primary/20" 
                           type="number" step="0.1" value={ing.quantity} 
                           onChange={e => {
                             const newIngs = [...ingredients];
@@ -297,7 +297,7 @@ export default function NewRecipePage() {
                           }} 
                         />
                         <input 
-                          className="flex-1 bg-slate-50 rounded-xl p-3 text-sm font-black text-accent focus:ring-2 focus:ring-primary/20" 
+                          className="flex-1 bg-muted rounded-xl p-3 text-sm font-black text-accent focus:ring-2 focus:ring-primary/20" 
                           placeholder="Item Name" value={ing.name} 
                           onChange={e => {
                             const newIngs = [...ingredients];
@@ -313,7 +313,7 @@ export default function NewRecipePage() {
                     
                     <button 
                       onClick={addIngredient} 
-                      className="w-full py-4 border-2 border-dashed border-slate-100 rounded-[1.5rem] text-slate-300 font-bold hover:border-primary/30 hover:text-primary transition-all flex items-center justify-center gap-2 mt-4"
+                      className="w-full py-4 border-2 border-dashed border-border rounded-[1.5rem] text-slate-300 font-bold hover:border-primary/30 hover:text-primary transition-all flex items-center justify-center gap-2 mt-4"
                     >
                       <Plus size={18} />
                       {t_recipe('add_ingredient')}

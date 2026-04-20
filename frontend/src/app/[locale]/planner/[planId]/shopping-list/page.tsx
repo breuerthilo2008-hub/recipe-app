@@ -71,7 +71,7 @@ export default function ShoppingListPage() {
     return (
       <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center p-6 bg-background">
         <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
-        <p className="text-slate-500 font-black animate-pulse">Gathering Ingredients...</p>
+        <p className="text-muted-foreground font-black animate-pulse">Gathering Ingredients...</p>
       </div>
     );
   }
@@ -96,7 +96,7 @@ export default function ShoppingListPage() {
               </div>
               <div>
                 <h1 className="text-4xl font-black text-accent">{t('title')}</h1>
-                <p className="text-slate-500 font-medium">{t('subtitle')}</p>
+                <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
               </div>
             </div>
           </div>
@@ -104,14 +104,14 @@ export default function ShoppingListPage() {
           <div className="flex items-center gap-3 animate-in fade-in slide-in-from-right-4 duration-700">
             <button 
               onClick={() => handleExport('txt')}
-              className="group relative flex items-center gap-2 px-5 py-3 bg-white border border-slate-100 rounded-2xl text-sm font-black text-accent hover:shadow-xl hover:shadow-slate-200/50 transition-all active:scale-95"
+              className="group relative flex items-center gap-2 px-5 py-3 bg-card border border-border rounded-2xl text-sm font-black text-accent hover:shadow-xl hover:shadow-black/5 transition-all active:scale-95"
             >
               <FileText size={18} className="text-primary" />
               <span>TXT</span>
             </button>
             <button 
               onClick={() => handleExport('csv')}
-              className="group relative flex items-center gap-2 px-5 py-3 bg-white border border-slate-100 rounded-2xl text-sm font-black text-accent hover:shadow-xl hover:shadow-slate-200/50 transition-all active:scale-95"
+              className="group relative flex items-center gap-2 px-5 py-3 bg-card border border-border rounded-2xl text-sm font-black text-accent hover:shadow-xl hover:shadow-black/5 transition-all active:scale-95"
             >
               <TableIcon size={18} className="text-primary" />
               <span>CSV</span>
@@ -120,8 +120,8 @@ export default function ShoppingListPage() {
         </div>
 
         {items.length === 0 ? (
-          <div className="bg-white rounded-[3rem] p-16 text-center shadow-sm border border-slate-50 animate-in fade-in zoom-in-95 duration-500">
-             <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center mb-8 mx-auto text-slate-300">
+          <div className="bg-card rounded-[3rem] p-16 text-center shadow-sm border border-border animate-in fade-in zoom-in-95 duration-500">
+             <div className="w-20 h-20 bg-muted rounded-3xl flex items-center justify-center mb-8 mx-auto text-slate-300">
                <ChefHat size={40} />
              </div>
              <h2 className="text-2xl font-black text-accent mb-3">{t('empty')}</h2>
@@ -135,8 +135,8 @@ export default function ShoppingListPage() {
                 className={`
                   w-full flex items-center justify-between p-6 rounded-[2rem] border transition-all duration-300 text-left
                   ${checked[item.name] 
-                    ? 'bg-slate-50 border-slate-200 opacity-60' 
-                    : 'bg-white border-white shadow-sm hover:shadow-xl hover:shadow-slate-200/50 hover:scale-[1.01]'}
+                    ? 'bg-muted border-border opacity-60' 
+                    : 'bg-card border-white shadow-sm hover:shadow-xl hover:shadow-black/5 hover:scale-[1.01]'}
                 `}
               >
                 <div className="flex items-center gap-6">
@@ -144,10 +144,10 @@ export default function ShoppingListPage() {
                     {checked[item.name] ? <CheckCircle2 size={28} /> : <Circle size={28} />}
                   </div>
                   <div>
-                    <p className={`text-xl font-black transition-all ${checked[item.name] ? 'text-slate-400 line-through decoration-2' : 'text-accent'}`}>
+                    <p className={`text-xl font-black transition-all ${checked[item.name] ? 'text-muted-foreground line-through decoration-2' : 'text-accent'}`}>
                       {item.name}
                     </p>
-                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-1">
+                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mt-1">
                       {item.unit || 'units'}
                     </p>
                   </div>
@@ -155,7 +155,7 @@ export default function ShoppingListPage() {
                 
                 <div className={`
                   px-6 py-2 rounded-xl font-black text-lg
-                  ${checked[item.name] ? 'bg-slate-100 text-slate-400' : 'bg-primary/10 text-primary'}
+                  ${checked[item.name] ? 'bg-muted text-muted-foreground' : 'bg-primary/10 text-primary'}
                 `}>
                   {item.total}
                 </div>

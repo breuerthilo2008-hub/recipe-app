@@ -57,7 +57,7 @@ export default function GroupOnboarding() {
                         <Users size={32} />
                     </div>
                     <h1 className="text-3xl font-black text-accent mb-2">Welcome to your Kitchen</h1>
-                    <p className="text-slate-500 max-w-md mx-auto">Recipes are better when shared. Start a new family vault or join one with an invite code.</p>
+                    <p className="text-muted-foreground max-w-md mx-auto">Recipes are better when shared. Start a new family vault or join one with an invite code.</p>
 
                     {error && (
                         <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-bold">
@@ -67,12 +67,12 @@ export default function GroupOnboarding() {
                 </div>
 
                 {/* Create Group Card */}
-                <div className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col">
+                <div className="bg-card p-8 rounded-[2.5rem] shadow-xl shadow-black/5 border border-border flex flex-col">
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
                         <Plus size={24} />
                     </div>
                     <h2 className="text-xl font-bold text-accent mb-2">Start a new family</h2>
-                    <p className="text-sm text-slate-500 mb-8">Create a private space for your family to share and plan meals together.</p>
+                    <p className="text-sm text-muted-foreground mb-8">Create a private space for your family to share and plan meals together.</p>
 
                     <form onSubmit={handleCreate} className="mt-auto space-y-4">
                         <input
@@ -80,7 +80,7 @@ export default function GroupOnboarding() {
                             placeholder="e.g. The Miller Family"
                             value={groupName}
                             onChange={(e) => setGroupName(e.target.value)}
-                            className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20 transition-all font-medium"
+                            className="w-full px-5 py-4 bg-muted border-none rounded-2xl focus:ring-2 focus:ring-primary/20 transition-all font-medium"
                             required
                         />
                         <button
@@ -95,7 +95,7 @@ export default function GroupOnboarding() {
 
                 {/* Join Group Card */}
                 <div className="bg-accent p-8 rounded-[2.5rem] shadow-xl shadow-accent/20 text-white flex flex-col">
-                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+                    <div className="w-12 h-12 bg-card/10 rounded-xl flex items-center justify-center text-white mb-6">
                         <Users size={24} />
                     </div>
                     <h2 className="text-xl font-bold mb-2">Join your family</h2>
@@ -108,12 +108,12 @@ export default function GroupOnboarding() {
                             maxLength={6}
                             value={inviteCode}
                             onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
-                            className="w-full px-5 py-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-white/20 transition-all font-bold tracking-widest text-center"
+                            className="w-full px-5 py-4 bg-card/10 border-none rounded-2xl focus:ring-2 focus:ring-white/20 transition-all font-bold tracking-widest text-center"
                             required
                         />
                         <button
                             disabled={!!loading}
-                            className="w-full py-4 bg-white text-accent rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-white/90 transition-all active:scale-95 disabled:opacity-50"
+                            className="w-full py-4 bg-card text-accent rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-card/90 transition-all active:scale-95 disabled:opacity-50"
                         >
                             {loading === 'join' ? <Loader2 className="animate-spin" /> : 'Join Family'}
                             <ArrowRight size={18} />

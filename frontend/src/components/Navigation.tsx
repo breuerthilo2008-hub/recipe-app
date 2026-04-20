@@ -91,10 +91,10 @@ export default function Navigation() {
              {mounted && (
                <button
                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                 className="relative w-12 h-6 bg-slate-100 dark:bg-slate-800 rounded-full p-1 transition-colors duration-500 shadow-inner group"
+                 className="relative w-12 h-6 bg-muted dark:bg-slate-800 rounded-full p-1 transition-colors duration-500 shadow-inner group"
                >
                  <div className={`
-                   absolute top-1 left-1 w-4 h-4 bg-white dark:bg-primary rounded-full shadow-md transform transition-all duration-500 flex items-center justify-center
+                   absolute top-1 left-1 w-4 h-4 bg-card dark:bg-primary rounded-full shadow-md transform transition-all duration-500 flex items-center justify-center
                    ${theme === 'dark' ? 'translate-x-6 rotate-[360deg]' : 'translate-x-0'}
                  `}>
                    {theme === 'dark' ? <Moon size={10} className="text-white" /> : <Sun size={10} className="text-primary" />}
@@ -105,7 +105,7 @@ export default function Navigation() {
              <div className="h-4 w-px bg-border/50 mx-2 hidden sm:block"></div>
 
              {loading ? (
-               <div className="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded-full animate-pulse"></div>
+               <div className="w-8 h-8 bg-muted dark:bg-slate-800 rounded-full animate-pulse"></div>
              ) : user ? (
                <div className="relative">
                  <button
@@ -116,16 +116,16 @@ export default function Navigation() {
                      <User size={18} />
                    </div>
                    <div className="text-left hidden md:block">
-                     <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-none mb-1">{groupName || 'No Family'}</p>
+                     <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest leading-none mb-1">{groupName || 'No Family'}</p>
                      <p className="text-sm font-bold text-accent leading-none">{user.name}</p>
                    </div>
-                   <ChevronDown size={14} className={`text-slate-400 transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                   <ChevronDown size={14} className={`text-muted-foreground transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
                  </button>
 
                  {dropdownOpen && (
                    <div className="absolute right-0 mt-3 w-56 bg-card rounded-2xl shadow-2xl border border-border/50 p-2 animate-in fade-in slide-in-from-top-2">
                      <div className="px-4 py-2 border-b border-border/30 mb-1">
-                       <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black">Family Access</p>
+                       <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">Family Access</p>
                      </div>
                      <Link 
                        href={`/groups/${groupId || 'new'}`} 

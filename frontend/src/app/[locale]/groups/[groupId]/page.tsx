@@ -71,15 +71,15 @@ export default function GroupDashboard() {
     if (loading) return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6">
             <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
-            <p className="text-slate-500 font-bold animate-pulse">Loading Kitchen...</p>
+            <p className="text-muted-foreground font-bold animate-pulse">Loading Kitchen...</p>
         </div>
     );
 
     if (error) return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6">
-            <div className="bg-white p-8 rounded-[2.5rem] shadow-xl text-center max-w-sm border border-red-50">
+            <div className="bg-card p-8 rounded-[2.5rem] shadow-xl text-center max-w-sm border border-red-50">
                 <h1 className="text-2xl font-black text-accent mb-4">Oops!</h1>
-                <p className="text-slate-500 mb-6">{error}</p>
+                <p className="text-muted-foreground mb-6">{error}</p>
                 <button onClick={() => router.push('/')} className="w-full py-4 bg-primary text-primary-foreground rounded-2xl font-bold">Go Back Home</button>
             </div>
         </div>
@@ -101,14 +101,14 @@ export default function GroupDashboard() {
                         <h1 className="text-4xl md:text-5xl font-black text-accent">{data.group.name}</h1>
                     </div>
 
-                    <div className="bg-white/50 backdrop-blur px-6 py-3 rounded-2xl border border-slate-100 flex items-center gap-4">
+                    <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-2xl border border-border flex items-center gap-4">
                         <div className="text-right">
-                            <p className="text-[10px] uppercase tracking-tighter text-slate-400 font-black">Members</p>
+                            <p className="text-[10px] uppercase tracking-tighter text-muted-foreground font-black">Members</p>
                             <p className="text-xl font-black text-primary leading-none">{data.members.length}</p>
                         </div>
                         <div className="w-px h-8 bg-slate-200"></div>
                         <div className="text-right">
-                            <p className="text-[10px] uppercase tracking-tighter text-slate-400 font-black">Established</p>
+                            <p className="text-[10px] uppercase tracking-tighter text-muted-foreground font-black">Established</p>
                             <p className="text-xl font-black text-accent leading-none">{new Date(data.group.created_at).getFullYear()}</p>
                         </div>
                     </div>
@@ -121,7 +121,7 @@ export default function GroupDashboard() {
                         <h2 className="text-2xl font-black text-accent px-2">Family Members</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {data.members.map((member: any) => (
-                                <div key={member.id} className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-50 flex items-center justify-between group hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                                <div key={member.id} className="bg-card p-6 rounded-[2rem] shadow-sm border border-border flex items-center justify-between group hover:shadow-xl hover:shadow-black/5 transition-all duration-500">
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold border border-primary/20">
                                             {member.name.charAt(0).toUpperCase()}
@@ -131,7 +131,7 @@ export default function GroupDashboard() {
                                                 <p className="font-bold text-accent">{member.name}</p>
                                                 {member.role === 'owner' && < Shield size={14} className="text-amber-500" />}
                                             </div>
-                                            <p className="text-xs text-slate-400">{member.email}</p>
+                                            <p className="text-xs text-muted-foreground">{member.email}</p>
                                         </div>
                                     </div>
 
@@ -166,19 +166,19 @@ export default function GroupDashboard() {
                                     <button
                                         onClick={generateInvite}
                                         disabled={generating || !isOwner}
-                                        className="w-full py-4 bg-white text-accent rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-white/90 transition-all active:scale-95 disabled:opacity-50"
+                                        className="w-full py-4 bg-card text-accent rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-card/90 transition-all active:scale-95 disabled:opacity-50"
                                     >
                                         {generating ? <Loader2 className="animate-spin" /> : <UserPlus size={20} />}
                                         {isOwner ? 'Create Invite Code' : 'Owner Only'}
                                     </button>
                                 ) : (
                                     <div className="space-y-4 animate-in zoom-in-95 duration-500">
-                                        <div className="bg-white/10 rounded-2xl p-6 text-center border border-white/10">
+                                        <div className="bg-card/10 rounded-2xl p-6 text-center border border-white/10">
                                             <p className="text-[10px] uppercase font-black tracking-widest text-white/50 mb-4">Share this code</p>
                                             <div className="text-5xl font-black tracking-[0.2em] mb-4 text-primary-foreground">{inviteCode.code}</div>
                                             <button
                                                 onClick={handleCopy}
-                                                className="flex items-center gap-2 mx-auto text-sm font-bold bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-colors"
+                                                className="flex items-center gap-2 mx-auto text-sm font-bold bg-card/20 hover:bg-card/30 px-4 py-2 rounded-full transition-colors"
                                             >
                                                 {copied ? <Check size={16} /> : <Copy size={16} />}
                                                 {copied ? 'Copied!' : 'Copy Code'}
@@ -200,8 +200,8 @@ export default function GroupDashboard() {
                         </div>
 
                         {!isOwner && (
-                            <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
-                                <p className="text-xs text-slate-400 leading-relaxed italic">
+                            <div className="p-6 bg-muted rounded-[2rem] border border-border">
+                                <p className="text-xs text-muted-foreground leading-relaxed italic">
                                     Note: Only the family owner can manage members and generate invite codes.
                                 </p>
                             </div>

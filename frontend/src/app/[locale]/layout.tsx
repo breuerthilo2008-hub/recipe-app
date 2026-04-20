@@ -26,7 +26,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${jakarta.className} bg-background min-h-screen text-foreground antialiased`}>
+      <body className={`${jakarta.className} bg-background text-foreground min-h-screen antialiased transition-colors duration-300`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"

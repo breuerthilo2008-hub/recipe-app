@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
-  --color-background: #F8F3EC;
-  --color-foreground: #3D3128;
-  
-  --color-primary: #7D8C7C;
-  --color-primary-foreground: #F8F3EC;
-  
-  --color-secondary: #D9C5B2;
-  --color-secondary-foreground: #3D3128;
-  
-  --color-accent: #3D3128;
-  --color-accent-foreground: #F8F3EC;
-  
-  --color-card: #FFFFFF;
-  --color-card-foreground: #3D3128;
-  
-  /* Standard colors for borders etc */
-  --color-border: #E2E8F0;
-  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  :root {
+    --background: #F8F3EC;
+    --foreground: #3D3128;
+    --card: #FFFFFF;
+    --card-foreground: #3D3128;
+    --popover: #FFFFFF;
+    --popover-foreground: #3D3128;
+    --primary: #7D8C7C;
+    --primary-foreground: #F8F3EC;
+    --secondary: #D9C5B2;
+    --secondary-foreground: #3D3128;
+    --muted: #f8fafc;
+    --muted-foreground: #64748b;
+    --accent: #A67C52;
+    --accent-foreground: #F8F3EC;
+    --border: #f1f5f9;
+  }
+  .dark {
+    --background: #121212;
+    --foreground: #f8fafc;
+    --card: #1e1e1e;
+    --card-foreground: #f8fafc;
+    --popover: #1e1e1e;
+    --popover-foreground: #f8fafc;
+    --primary: #7D8C7C;
+    --primary-foreground: #121212;
+    --secondary: #D9C5B2;
+    --secondary-foreground: #1e1e1e;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #A67C52;
+    --accent-foreground: #121212;
+    --border: #333333;
+  }
 }
 
 @layer base {
