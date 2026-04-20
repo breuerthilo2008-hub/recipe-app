@@ -11,7 +11,11 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://recipe-app-five-wine-43.vercel.app',
+    process.env.CLIENT_ORIGIN
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(express.json());
