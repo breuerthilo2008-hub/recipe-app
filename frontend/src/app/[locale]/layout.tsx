@@ -26,21 +26,21 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${jakarta.className} bg-background text-foreground min-h-screen antialiased transition-colors duration-300`}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-          >
+      <body className={`${jakarta.className} bg-background text-foreground min-h-screen antialiased transition-colors duration-300`} suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
+          <NextIntlClientProvider messages={messages}>
             <GroupProvider>
               <Navigation />
               <div className="pt-16">
                 {children}
               </div>
             </GroupProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
