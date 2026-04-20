@@ -1,6 +1,9 @@
 // frontend/src/lib/api.ts
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+let API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+if (API_BASE && !API_BASE.endsWith('/api')) {
+  API_BASE += '/api';
+}
 
 async function request(path: string, options: RequestInit = {}) {
   const url = `${API_BASE}${path}`;

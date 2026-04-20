@@ -62,7 +62,10 @@ export default function ShoppingListPage() {
 
   const handleExport = (format: 'txt' | 'csv') => {
     // Generate the direct backend Export URL
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+    let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+    if (baseUrl && !baseUrl.endsWith('/api')) {
+      baseUrl += '/api';
+    }
     const exportUrl = `${baseUrl}/groups/${groupId}/meal-plans/${params.planId}/shopping-list/export?format=${format}`;
     window.open(exportUrl, '_blank');
   };
